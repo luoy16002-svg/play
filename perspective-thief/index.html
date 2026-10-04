@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>Perspective Thief</title>
+    <script type="module" crossorigin src="./index-DVv75cTa.js"></script>
+    <link rel="stylesheet" crossorigin href="./index-BlAc_Pyl.css">
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="job"><div id="job-level">Job 1</div><div id="job-goal">Get the diamond</div></div>
+      <div id="timer">0:00</div>
+      <div class="hud-right">
+        <div id="bag" title="Your bag"><div class="bag-icon"></div><div id="bag-item"></div></div>
+        <button class="icon-btn" id="btn-restart" aria-label="Restart" title="Restart the job (R)"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" /></svg></button>
+        <button class="icon-btn" id="btn-pause" aria-label="Pause"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.5" /><rect x="14" y="5" width="4" height="14" rx="1.5" /></svg></button>
+      </div>
+      <div id="crosshair"><div class="dot"></div><div class="ring"></div></div>
+      <div id="size-tag"></div>
+      <div id="hint"></div>
+      <div id="touch" class="hidden">
+        <div id="stick"><div id="stick-knob"></div></div>
+        <button class="touch-btn" id="btn-grab">GRAB</button>
+        <button class="touch-btn small" id="btn-jump">JUMP</button>
+      </div>
+    </div>
+
+    <div id="stamp" class="hidden"></div>
+    <div id="lock-prompt" class="hidden"><div class="lock-card">Click to look around<span>WASD to move &middot; Click to grab</span></div></div>
+
+    <section id="screen-title" class="screen">
+      <div class="logo"><div class="logo-top" data-text="PERSPECTIVE">PERSPECTIVE</div><div class="logo-main" data-text="THIEF">THIEF</div></div>
+      <div class="title-bottom">
+        <button class="btn btn-play" id="btn-play">PLAY</button>
+        <button class="btn btn-ghost" id="btn-levels">LEVELS</button>
+      </div>
+      <button class="icon-btn corner" id="btn-sound" aria-label="Sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" /><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke-width="2" stroke-linecap="round" /></svg></button>
+    </section>
+
+    <section id="screen-levels" class="screen hidden">
+      <div class="panel wide">
+        <div class="panel-title">PICK A JOB</div>
+        <div class="level-grid" id="level-grid"></div>
+        <div class="row"><button class="btn btn-ghost" id="btn-levels-back">BACK</button></div>
+      </div>
+    </section>
+
+    <section id="screen-pause" class="screen hidden">
+      <div class="panel">
+        <div class="panel-title">PAUSED</div>
+        <div class="col">
+          <button class="btn btn-play" id="btn-resume">RESUME</button>
+          <button class="btn btn-ghost" id="btn-restart2">RESTART JOB</button>
+          <button class="btn btn-ghost" id="btn-pause-levels">LEVELS</button>
+        </div>
+        <div class="row toggles">
+          <button class="toggle" id="tg-music">MUSIC</button>
+          <button class="toggle" id="tg-sfx">SOUND</button>
+        </div>
+        <div class="sens">LOOK SPEED <input type="range" id="sens" min="0.4" max="2" step="0.1" value="1" /></div>
+      </div>
+    </section>
+
+    <section id="screen-win" class="screen hidden">
+      <div class="panel">
+        <div class="panel-title" id="win-title">CLEAN GETAWAY!</div>
+        <div class="stars" id="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="win-line" id="win-line">0:42</div>
+        <div class="row">
+          <button class="btn btn-ghost" id="btn-again">AGAIN</button>
+          <button class="btn btn-play" id="btn-next">NEXT</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="cover-logo" class="hidden"><div class="logo"><div class="logo-top" data-text="PERSPECTIVE">PERSPECTIVE</div><div class="logo-main" data-text="THIEF">THIEF</div></div></div>
+    <div id="rotate" class="hidden"><div class="rotate-icon"></div><div>Turn your device sideways</div></div>
+    <div id="loading"><div class="load-logo" data-text="PERSPECTIVE THIEF">PERSPECTIVE THIEF</div><div class="load-bar"><div id="load-fill"></div></div></div>
+  </body>
+</html>

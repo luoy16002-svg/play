@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>Rewind Robbers</title>
+
+    <script type="module" crossorigin src="./index-If8xHnpK.js"></script>
+    <link rel="stylesheet" crossorigin href="./index-BbUb0Lyv.css">
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="vhs" class="hidden"><div class="vhs-lines"></div><div class="vhs-label">&#9664;&#9664; REWIND</div></div>
+
+    <div id="hud" class="hidden">
+      <div id="takes"></div>
+      <div class="goal-card"><div id="goal-level">Level 1</div><div id="goal-text">Steal the diamond</div></div>
+      <div class="hud-right">
+        <button class="icon-btn" id="btn-hint" aria-label="Hint" title="Show the hint">?</button>
+        <button class="icon-btn hidden" id="btn-undo-take" aria-label="Undo last take" title="Undo the last take (U)"><svg viewBox="0 0 24 24"><path d="M9 7H4v5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M4.6 11.2A8 8 0 1 1 7 17.6" fill="none" stroke-width="2.4" stroke-linecap="round" /><circle cx="12" cy="12" r="2.2" /></svg></button>
+        <button class="icon-btn" id="btn-retry" aria-label="Retry take" title="Retry this take (R)"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" /></svg></button>
+        <button class="icon-btn" id="btn-pause" aria-label="Pause"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.5" /><rect x="14" y="5" width="4" height="14" rx="1.5" /></svg></button>
+      </div>
+      <div class="bottom-bar">
+        <div class="filmstrip"><div id="film-fill"></div><div id="film-time">8.0</div></div>
+        <button class="btn btn-rewind" id="btn-rewind">&#9664;&#9664; REWIND</button>
+        <button class="btn btn-drop hidden" id="btn-drop">DROP</button>
+      </div>
+      <div id="hint-bubble"></div>
+    </div>
+
+    <div id="stamp" class="hidden"></div>
+
+    <section id="screen-title" class="screen">
+      <div class="logo"><div class="logo-top" data-text="REWIND">REWIND</div><div class="logo-main" data-text="ROBBERS">ROBBERS</div></div>
+      <div class="title-bottom">
+        <button class="btn btn-play" id="btn-play">PLAY</button>
+        <button class="btn btn-ghost" id="btn-levels">LEVELS</button>
+      </div>
+      <button class="icon-btn corner" id="btn-sound" aria-label="Sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" /><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke-width="2" stroke-linecap="round" /></svg></button>
+    </section>
+
+    <section id="screen-levels" class="screen hidden">
+      <div class="panel wide">
+        <div class="panel-title">PICK A JOB</div>
+        <div class="level-grid" id="level-grid"></div>
+        <div class="row"><button class="btn btn-ghost" id="btn-levels-back">BACK</button></div>
+      </div>
+    </section>
+
+    <section id="screen-pause" class="screen hidden">
+      <div class="panel">
+        <div class="panel-title">PAUSED</div>
+        <div class="col">
+          <button class="btn btn-play" id="btn-resume">RESUME</button>
+          <button class="btn btn-ghost" id="btn-restart">RESTART JOB</button>
+          <button class="btn btn-ghost" id="btn-pause-levels">LEVELS</button>
+        </div>
+        <div class="row toggles">
+          <button class="toggle" id="tg-music">MUSIC</button>
+          <button class="toggle" id="tg-sfx">SOUND</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-out" class="screen hidden">
+      <div class="panel">
+        <div class="panel-title">OUT OF TAKES</div>
+        <div class="win-line">Every take is used up. Try the last one again, or plan the job from scratch.</div>
+        <div class="row">
+          <button class="btn btn-ghost" id="btn-undo">RETRY LAST TAKE</button>
+          <button class="btn btn-play" id="btn-out-restart">RESTART JOB</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-win" class="screen hidden">
+      <div class="panel">
+        <div class="panel-title" id="win-title">CLEAN GETAWAY!</div>
+        <div class="stars" id="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="win-line" id="win-line">2 takes</div>
+        <div class="row">
+          <button class="btn btn-ghost" id="btn-again">AGAIN</button>
+          <button class="btn btn-play" id="btn-next">NEXT</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="cover-logo" class="hidden"><div class="logo"><div class="logo-top" data-text="REWIND">REWIND</div><div class="logo-main" data-text="ROBBERS">ROBBERS</div></div><div class="vhs-tag">&#9664;&#9664; REWIND &middot; REPLAY &middot; ROB</div></div>
+    <div id="rotate" class="hidden"><div class="rotate-icon"></div><div>Turn your device sideways</div></div>
+    <div id="loading"><div class="load-logo" data-text="REWIND ROBBERS">REWIND ROBBERS</div><div class="load-bar"><div id="load-fill"></div></div></div>
+
+  </body>
+</html>
