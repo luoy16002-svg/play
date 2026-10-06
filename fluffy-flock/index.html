@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Fluffy Flock</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cg fill=%27%23FFF6E4%27 stroke=%27%235B4D44%27 stroke-width=%271.6%27%3E%3Ccircle cx=%279%27 cy=%2715%27 r=%275%27/%3E%3Ccircle cx=%2714%27 cy=%2711%27 r=%275.5%27/%3E%3Ccircle cx=%2720%27 cy=%2712%27 r=%275%27/%3E%3Ccircle cx=%2712%27 cy=%2719%27 r=%275%27/%3E%3Ccircle cx=%2719%27 cy=%2719%27 r=%275%27/%3E%3C/g%3E%3Cellipse cx=%2725%27 cy=%2716%27 rx=%274%27 ry=%275%27 fill=%27%232E2A2B%27/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./index-BTo6enQS.js"></script>
+  <link rel="stylesheet" crossorigin href="./index-8tMUHV6P.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="ff-logo">
+    <div class="logo-word"><span class="l1">Fluffy</span><span class="l2">Flock</span></div>
+    <div class="logo-sub">Herd your flock across the hills. Find the giant pictures hidden in the grass.</div>
+  </div>
+
+  <div id="hud">
+    <div class="hud-top">
+      <div class="hud-left">
+        <div class="pill" id="p-wool"><span class="ico" id="i-wool"></span><b id="h-wool">0</b></div>
+        <div class="pill" id="p-flock"><span class="ico" id="i-sheep"></span><b id="h-flock">0</b></div>
+      </div>
+      <div class="dial" id="dial">
+        <svg viewBox="0 0 100 54" aria-hidden="true">
+          <path d="M12 46 A38 34 0 0 1 88 46" fill="none" stroke="rgba(255,248,232,0.6)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 7"/>
+          <circle id="sun" cx="12" cy="46" r="7.5" />
+        </svg>
+        <div class="dial-day" id="h-day">Day 1</div>
+        <div class="dial-home" id="h-home"></div>
+      </div>
+      <div class="hud-right">
+        <button class="sound-chip hidden" id="btn-sound" aria-label="Turn on sound"></button>
+        <button class="round" id="btn-pause" aria-label="Pause"></button>
+      </div>
+    </div>
+    <div class="field-card">
+      <div class="field-row"><span id="f-name">Daisy Hill</span><span class="dot">·</span><span id="f-pic" class="pic-name">The Chalk Sheep</span></div>
+      <div class="bar"><div id="f-fill"></div></div>
+      <div class="pct" id="f-pct">0%</div>
+    </div>
+    <div id="hint"><span class="hand" id="hint-hand"></span><span id="hint-text"></span></div>
+  </div>
+  <div id="toast"></div>
+  <div id="banner"></div>
+
+  <section id="night" class="card-wrap">
+    <div class="card">
+      <div class="card-title" id="n-title">Night 1</div>
+      <div class="card-sub" id="n-home"></div>
+      <div class="shear">
+        <div class="shear-label">Wool sheared</div>
+        <div class="shear-num"><span class="ico big" id="i-wool2"></span><b id="n-wool">0</b></div>
+        <div class="shear-bonus" id="n-bonus"></div>
+        <div class="shear-tip" id="n-tip"></div>
+      </div>
+      <div class="facts"><div id="n-lambs"></div><div id="n-field"></div><div id="n-joined" class="joined hidden"></div></div>
+      <div class="pick hidden" id="n-pick">
+        <button class="pick-arrow" id="n-prev" aria-label="Previous pasture"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="pick-txt"><span class="pick-label">Tomorrow</span><b id="n-pick-name"></b><small id="n-pick-sub"></small></div>
+        <button class="pick-arrow" id="n-nextf" aria-label="Next pasture"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <button class="btn btn-gold hidden" id="n-double">Double the wool</button>
+      <div class="row2">
+        <button class="btn btn-cream" id="n-shop">Upgrades</button>
+        <button class="btn btn-go" id="n-next">Next day</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" class="card-wrap">
+    <div class="card wide">
+      <div class="card-head"><div class="card-title">Upgrades</div><div class="pill small"><span class="ico">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16.5" r="12.5" fill="#FFF6E4" stroke="#6B4A33" stroke-width="2"/><path d="M7 12c5-3 12-3 18 1M5.5 18c6-3 14-3 21 0M8 24c5-2 11-2 16 0M12 5.5c-2 6-2 15 1 22" fill="none" stroke="#C9B08A" stroke-width="1.8" stroke-linecap="round"/></svg></span><b id="s-wool">0</b></div></div>
+      <div class="up-list" id="s-list"></div>
+      <button class="btn btn-go" id="s-next">Next day</button>
+    </div>
+  </section>
+
+  <section id="pause" class="card-wrap">
+    <div class="card">
+      <div class="card-title">Paused</div>
+      <div class="opts">
+        <button class="opt" id="o-music-row"><span>Music</span><b id="o-music">On</b></button>
+        <button class="opt" id="o-sfx-row"><span>Sounds</span><b id="o-sfx">On</b></button>
+        <button class="opt" id="o-quality-row"><span>Graphics</span><b id="o-quality">High</b></button>
+      </div>
+      <div class="row2">
+        <button class="btn btn-cream" id="p-album">Album</button>
+        <button class="btn btn-go" id="p-resume">Resume</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="album" class="card-wrap top">
+    <div class="card wide">
+      <div class="card-title">Album</div>
+      <div class="a-scroll">
+        <div class="a-sec">Pictures in the hills</div>
+        <div class="a-grid" id="a-pics"></div>
+        <div class="a-sec">Breeds</div>
+        <div class="a-grid b" id="a-breeds"></div>
+      </div>
+      <button class="btn btn-go" id="a-close">Back</button>
+    </div>
+  </section>
+
+  <section id="welcome" class="card-wrap">
+    <div class="card">
+      <div class="card-title">Welcome back</div>
+      <div class="card-sub">Your flock grazed while you were away</div>
+      <div class="shear"><div class="shear-num"><b id="w-wool">+0</b></div><div class="shear-bonus" id="w-streak"></div></div>
+      <div class="facts"><div id="w-lambs"></div></div>
+      <button class="btn btn-go" id="w-go">Let's go</button>
+    </div>
+  </section>
+
+</body>
+</html>
